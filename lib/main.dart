@@ -33,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  double _opacity = 1.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             AnimatedOpacity(
               duration: Duration(seconds: 5),
-              opacity: 0.5,
+              opacity: _opacity,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image(
@@ -74,6 +76,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _opacity = 0.5;
+          });
+        },
+        child: Icon(
+          Icons.animation,
         ),
       ),
     );
